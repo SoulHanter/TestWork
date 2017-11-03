@@ -13,31 +13,26 @@ namespace TestWork.Console
         static void Main(string[] args)
         {
             string resultMessage = "";
-            int n = 0;
 
-            System.Console.Write("Введите количество студентов: n = ");
-
-            if (int.TryParse(System.Console.ReadLine(), out n))
+            try
             {
+                System.Console.Write("Введите количество студентов: n = ");
+                var n = System.Console.ReadLine().IsInRange();
+
                 System.Console.WriteLine("Введите количество сообщений для каждого студента: A{a1, a2, ... an} = ");
+                var a = System.Console.ReadLine().GetCountMessages(n);
 
-                try
-                {
-                    var a = System.Console.ReadLine().GetCountMessages();
-                    resultMessage = SendMessageStudents.SendMessage(n, a);
-                }
-                catch (Exception e)
-                {
-                    resultMessage = e.Message;
-                }
-                finally
-                {
-                    System.Console.WriteLine(resultMessage);
-                    System.Console.ReadKey();
-                }
+                resultMessage = SendMessageStudents.SendMessage(n, a);
             }
-
-            return;
+            catch (Exception e)
+            {
+                resultMessage = e.Message;
+            }
+            finally
+            {
+                System.Console.WriteLine(resultMessage);
+                System.Console.ReadKey();
+            }
 
         }
 

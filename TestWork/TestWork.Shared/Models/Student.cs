@@ -5,9 +5,9 @@ using System.Text;
 
 namespace TestWork.Shared.Models
 {
-    public class Students
+    public class Student
     {
-        public int Count { get; set; }
-        public int[] MessageCount { get; set; }
+        public int Position { get; set; }
+        public int CountMessages { get; set; }
     }
 }
